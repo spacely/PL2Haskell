@@ -1,9 +1,6 @@
 
 
-{-# LANGUAGE FlexibleContexts #-}   -- added to allow: binary s f = Infix (f <$ string s)
-                                    -- Compiler output:
-                                    -- Non type-variable argument in the constraint: 
-                                    -- Stream s m Char (Use FlexibleContexts to permit this)
+{-# LANGUAGE FlexibleContexts #-}   
 
 module Main where
 
@@ -26,6 +23,10 @@ import Control.Monad
 
 
 type Storage = Map.Map String Integer
+
+-- generated based on online resources from https://wiki.haskell.org/Parsing_a_simple_imperative_language
+-- https://wiki.haskell.org/wikiupload/c/c6/ICMI45-paper-en.pdf
+-- https://dokuwiki.unica.it/doku.php?id=sem_op_fun
 
 data Aexp
     = IntExp Integer        
@@ -189,8 +190,11 @@ output e1 = (evalCmd e1 Map.empty)
 
 
 -- converting to list for print
-addval [] (k, v) = [(k ++ " → " ++ (show v))]
-addval ls (k, v) = ((k ++ " → " ++ (show v)) : ls)
+addval [] (v, k) = [(v ++ " → " ++ (show k))]
+addval ls (v, k) = ((v ++ " → " ++ (show k)) : ls)
+
+--addval [] (k, v) = [(k ++ " → " ++ (show v))]
+--addval ls (k, v) = ((k ++ " → " ++ (show v)) : ls)
 convert ls = foldl addval [] ls
 
 

@@ -3,9 +3,7 @@ load harness
 @test "hard-1" {
   check 'if true ∧ -3 < 4 then x := -1 else y := 2' '{x → -1}'
 }
-@test "hard-2" {
-  check 'if ( 1 - 1 ) < 0 then z8 := 09 else z3 := 90' '{z3 → 90}'
-}
+
 
 @test "hard-3" {
   check 'z := ( x8 + 1 ) * -4' '{z → -4}'
