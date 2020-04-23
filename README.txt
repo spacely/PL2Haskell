@@ -32,7 +32,7 @@ To run tests:
 
 
 ### ERRORS####
-The code hangs on Error Hard-3. There was no time to debug the error.
+The code hangs on Error Hard-2. There was no time to debug the error.
 
 Removing this Test will allow continuation of tests. The output of the running program skips
 this test.
